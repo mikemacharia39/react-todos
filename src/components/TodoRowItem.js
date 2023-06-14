@@ -1,14 +1,10 @@
-function TodoRowItem() {
-
-    const rowNumber = 1;
-    const rowTask = "Learn React";
-    const rowDescription = "React is a library for developing modern single page websites";
+function TodoRowItem(props) {
 
  return (
     <tr>
-        <th scope='row'>{rowNumber}</th>
-        <td>{rowTask}</td>
-        <td>{rowDescription}</td>
+        <th scope='row'>{props.rowNumber}</th>
+        <td>{props.rowTask}</td>
+        <td>{props.rowDescription}</td>
     </tr>
  )
 }

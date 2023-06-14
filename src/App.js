@@ -1,8 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
-import TodoRowItem from './components/TodoRowItem';
+import TodoTable from './components/TodoTable';
 
 function App() {
+
+  const todos = [
+    {rowNumber: 1, rowTask: "Learn React", rowDescription: "React is a library for developing modern single page websites"},
+    {rowNumber: 2, rowTask: "Meeting", rowDescription: "Attend meeting at 10:30am"},
+    {rowNumber: 3, rowTask: "React with spring boot", rowDescription: "Learn react with spring boot"}
+  ]
+
   return (
     <div className='mt-5 container'>
       <div className='card'>
@@ -10,29 +17,7 @@ function App() {
           Your Tasks
         </div>
         <div className='card-body'>
-          <table className='table table-hover'>
-            <thead>
-              <tr>
-                <th scope='col'>
-                  #
-                </th>
-                <th scope='col'>
-                  Task
-                </th>
-                <th scope='col'>
-                  Description
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-                <TodoRowItem/>
-                <tr>
-                  <th scope='row'>2</th>
-                  <td>Meeting</td>
-                  <td>Attend meeting at 10:30am</td>
-                </tr>
-            </tbody>
-          </table>
+          <TodoTable todos={todos} />
         </div>
       </div>
     </div>
