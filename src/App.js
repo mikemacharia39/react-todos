@@ -1,15 +1,16 @@
-import logo from './logo.svg';
+import React, {useState} from 'react'; // adds state functionality in our component
 import './App.css';
 import TodoTable from './components/TodoTable';
 
 function App() {
 
-  const todos = [
+  // setTodos allows us to destructure the use state so that we can render more elements
+  const [todos, setTodos] =  useState([
     {rowNumber: 1, rowTask: "Learn React", rowDescription: "React is a library for developing modern single page websites"},
     {rowNumber: 2, rowTask: "Meeting", rowDescription: "Attend meeting at 10:30am"},
     {rowNumber: 3, rowTask: "React with spring boot", rowDescription: "Learn react with spring boot"},
     {rowNumber: 4, rowTask: "Spring boot with kafka", rowDescription: "Learn kafka event streams"}
-  ]
+  ])
 
   const showTodo = () => {
     const newTodo = {
@@ -18,7 +19,7 @@ function App() {
       rowDescription: "Learn AWS course"
     };
 
-    todos.push(newTodo);
+    setTodos(todos => [...todos, newTodo]);
 
     console.log(todos);
   }
