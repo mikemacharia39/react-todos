@@ -7,7 +7,8 @@ function App() {
   const todos = [
     {rowNumber: 1, rowTask: "Learn React", rowDescription: "React is a library for developing modern single page websites"},
     {rowNumber: 2, rowTask: "Meeting", rowDescription: "Attend meeting at 10:30am"},
-    {rowNumber: 3, rowTask: "React with spring boot", rowDescription: "Learn react with spring boot"}
+    {rowNumber: 3, rowTask: "React with spring boot", rowDescription: "Learn react with spring boot"},
+    {rowNumber: 4, rowTask: "Spring boot with kafka", rowDescription: "Learn kafka event streams"}
   ]
 
   return (
