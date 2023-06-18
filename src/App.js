@@ -13,11 +13,11 @@ function App() {
     {rowNumber: 4, rowTask: "Spring boot with kafka", rowDescription: "Learn kafka event streams"}
   ])
 
-  const showTodo = () => {
+  const addNewTodo = (task, description) => {
     const newTodo = {
       rowNumber: todos.length + 1,
-      rowTask: "AWS Proficiency course",
-      rowDescription: "Learn AWS course"
+      rowTask: task,
+      rowDescription: description
     };
 
     setTodos(todos => [...todos, newTodo]);
@@ -33,10 +33,10 @@ function App() {
         </div>
         <div className='card-body'>
           <TodoTable todos={todos} />
-          <button className='btn btn-primary' onClick={showTodo}>
+          <button className='btn btn-primary' onClick={addNewTodo}>
             Add New Todo
           </button>
-          <NewTodoForm/>
+          <NewTodoForm addNewTodo={addNewTodo}/>
         </div>
       </div>
     </div>
