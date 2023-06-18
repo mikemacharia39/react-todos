@@ -5,6 +5,8 @@ import NewTodoForm from './components/NewTodoForm';
 
 function App() {
 
+  const [showAddTodoForm, setShowAddTodoForm] = useState(false)
+
   // setTodos allows us to destructure the use state so that we can render more elements
   const [todos, setTodos] =  useState([
     {rowNumber: 1, rowTask: "Learn React", rowDescription: "React is a library for developing modern single page websites"},
@@ -14,8 +16,14 @@ function App() {
   ])
 
   const addNewTodo = (task, description) => {
+    let rowIndex = 0;
+    if (todos.length > 0) {
+      rowIndex = todos[todos.length - 1].rowNumber + 1;
+    } else {
+      rowIndex = 1;
+    }
     const newTodo = {
-      rowNumber: todos.length + 1,
+      rowNumber: rowIndex,
       rowTask: task,
       rowDescription: description
     };
@@ -25,6 +33,19 @@ function App() {
     console.log(todos);
   }
 
+  /**
+   * By deleting, returns all rows minus the row whose row number is the same as the deleted row number
+   * @param {*} deletedRowNumber 
+   * @returns array of not deleted rows
+   */
+  const deleteTodo = (deletedRowNumber) => {
+    let filtered = todos.filter(function(value) {
+      return value.rowNumber !== deletedRowNumber;
+    })
+
+    setTodos(filtered);
+  }
+
   return (
     <div className='mt-5 container'>
       <div className='card'>
@@ -32,11 +53,14 @@ function App() {
           Your Tasks
         </div>
         <div className='card-body'>
-          <TodoTable todos={todos} />
-          <button className='btn btn-primary' onClick={addNewTodo}>
-            Add New Todo
+          <TodoTable todos={todos}  deleteTodo={deleteTodo} />
+          <button className='btn btn-primary' onClick={() => setShowAddTodoForm(!showAddTodoForm)}>
+            { showAddTodoForm ? 'Close New Todo' : 'New Todo'}
           </button>
-          <NewTodoForm addNewTodo={addNewTodo}/>
+          {
+            // show Add new todo form if showAddTodoForm is true
+            showAddTodoForm &&  <NewTodoForm addNewTodo={addNewTodo}/>
+          }
         </div>
       </div>
     </div>
