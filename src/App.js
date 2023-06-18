@@ -11,6 +11,18 @@ function App() {
     {rowNumber: 4, rowTask: "Spring boot with kafka", rowDescription: "Learn kafka event streams"}
   ]
 
+  const showTodo = () => {
+    const newTodo = {
+      rowNumber: todos.length + 1,
+      rowTask: "AWS Proficiency course",
+      rowDescription: "Learn AWS course"
+    };
+
+    todos.push(newTodo);
+
+    console.log(todos);
+  }
+
   return (
     <div className='mt-5 container'>
       <div className='card'>
@@ -19,6 +31,9 @@ function App() {
         </div>
         <div className='card-body'>
           <TodoTable todos={todos} />
+          <button className='btn btn-primary' onClick={showTodo}>
+            Add New Todo
+          </button>
         </div>
       </div>
     </div>
