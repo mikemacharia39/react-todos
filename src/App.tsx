@@ -1,7 +1,7 @@
 import React, {useState} from 'react'; // adds state functionality in our component
 import './App.css';
-import TodoTable from './components/TodoTable';
-import NewTodoForm from './components/NewTodoForm';
+import { TodoTable } from './components/TodoTable';
+import { NewTodoForm } from './components/NewTodoForm';
 
 function App() {
 
@@ -15,7 +15,7 @@ function App() {
     {rowNumber: 4, rowTask: "Spring boot with kafka", rowDescription: "Learn kafka event streams"}
   ])
 
-  const addNewTodo = (task, description) => {
+  const addNewTodo = (task: string, description: string) => {
     let rowIndex = 0;
     if (todos.length > 0) {
       rowIndex = todos[todos.length - 1].rowNumber + 1;
@@ -38,7 +38,7 @@ function App() {
    * @param {*} deletedRowNumber 
    * @returns array of not deleted rows
    */
-  const deleteTodo = (deletedRowNumber) => {
+  const deleteTodo = (deletedRowNumber: number) => {
     let filtered = todos.filter(function(value) {
       return value.rowNumber !== deletedRowNumber;
     })

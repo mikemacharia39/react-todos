@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 
-function NewTodoForm(property) {
+export const NewTodoForm: React.FC<{addNewTodo: Function}> = (property) => {
 
     const [task, setTask] = useState('');
     const [description, setDescription] = useState('');
 
-    const taskEvent = (event) => {
+    const taskEvent = (event: any) => {
         setTask(event.target.value); // set's the state and then this value={task}> print's the state back to the value
     }
 
@@ -49,5 +49,3 @@ function NewTodoForm(property) {
         </div>
     )
 }
-
-export default NewTodoForm
